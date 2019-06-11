@@ -14,19 +14,3 @@ scalacOptions ++= {
       None
   }
 }
-
-enablePlugins(Example)
-
-examplePackageRef := q"com.yang_bo.dsl.keywords.akka.actor"
-
-import meta._
-exampleSuperTypes := exampleSuperTypes.value.flatMap {
-  case ctor"_root_.org.scalatest.FreeSpec" =>
-    Seq(
-      ctor"_root_.akka.testkit.TestKit(_root_.akka.actor.ActorSystem())",
-      ctor"_root_.org.scalatest.FreeSpecLike",
-      ctor"_root_.akka.testkit.ImplicitSender",
-    )
-  case otherTrait =>
-    Seq(otherTrait)
-}
