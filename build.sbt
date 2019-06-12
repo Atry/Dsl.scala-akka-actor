@@ -34,4 +34,4 @@ scalacOptions ++= {
   }
 }
 
-publish / skip := false
+publish / skip := true
