@@ -99,7 +99,7 @@ package actor {
     */
   final case class ReceiveMessage[Message]() extends Keyword[ReceiveMessage[Message], Message]
   object ReceiveMessage {
-    implicit def receiveDsl(
+    implicit def receiveMessageDsl(
         implicit context: ActorContext
     ): Dsl[ReceiveMessage[Any], Actor.Receive, Any] = { (keyword, handler) =>
       {
