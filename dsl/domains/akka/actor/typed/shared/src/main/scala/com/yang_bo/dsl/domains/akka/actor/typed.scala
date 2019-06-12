@@ -10,6 +10,8 @@ import scala.reflect.ClassTag
 
 /** Contains the [[com.thoughtworks.dsl.Dsl]] instances in the [[akka.actor.typed.Behavior]] domain.
   *
+  * <a href="https://search.maven.org/search?q=g:com.yang-bo.dsl.domains.akka.actor%20a:typed_*"><img src="https://img.shields.io/maven-central/v/com.yang-bo.dsl.domains.akka.actor/typed_2.13.svg?label=libraryDependencies+%2B=+%22com.yang-bo.dsl.domains.akka.actor%22+%25%25+%22typed%22+%25"/></a>
+  *
   * @author 杨博 (Yang Bo)
   */
 object typed {
