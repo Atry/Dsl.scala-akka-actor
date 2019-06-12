@@ -27,4 +27,13 @@ unidocProjectFilter in ScalaUnidoc in unidoc := {
   inProjects(jvmProjects: _*)
 }
 
+scalacOptions ++= {
+  scalaBinaryVersion.value match {
+    case "2.11" =>
+      Some("-Xexperimental")
+    case _ =>
+      None
+  }
+}
+
 publish / skip := false
