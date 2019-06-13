@@ -1,5 +1,7 @@
 enablePlugins(SubdirectoryOrganization)
 
+libraryDependencies += "com.thoughtworks.dsl" %%% "keywords-catch" % "1.3.2" % Optional
+
 libraryDependencies += "com.thoughtworks.dsl" %%% "dsl" % "1.3.2"
 
 addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "1.3.2")
@@ -16,3 +18,8 @@ scalacOptions ++= {
       None
   }
 }
+
+enablePlugins(Example)
+
+import meta._
+examplePackageRef := q"com.yang_bo.dsl.domains.akka.actor"
