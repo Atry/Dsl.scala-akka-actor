@@ -12,9 +12,3 @@ libraryDependencies += {
     "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.5.23" % Test
   }
 }
-
-// Only enable tests for JVM due to https://github.com/akka-js/akka.js/issues/96
-enablePlugins(Example)
-
-import meta._
-examplePackageRef := q"com.yang_bo.dsl.domains.akka.actor"
