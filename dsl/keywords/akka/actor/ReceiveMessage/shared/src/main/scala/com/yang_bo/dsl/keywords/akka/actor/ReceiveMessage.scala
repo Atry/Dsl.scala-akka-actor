@@ -47,10 +47,10 @@ import scala.reflect.ClassTag
 final case class ReceiveMessage[Message]() extends Keyword[ReceiveMessage[Message], Message]
 object ReceiveMessage {
 
-  /** A [[com.thoughtworks.dsl.Dsl.Keyword keyword]] to receive next message of an Akka actor.
+  /** A [[com.thoughtworks.dsl.Dsl.Keyword keyword]] to receive next message of specific type in an Akka actor.
     *
     * @author 杨博 (Yang Bo)
-    * @see [[domains.akka.actor.typed.typedReceiveMessage.PartialDsl]] for usage in the typed actor domains.
+    * @see [[domains.akka.actor.typed.typedReceiveMessagePartialDsl]] for usage in the typed actor domains.
     * @example This [[ReceiveMessage.Partial]] keyword can be used in the [[akka.actor.Actor.Receive]] domain,
     *          to receive the next message that is a [[Message]].
     *
