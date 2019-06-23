@@ -36,13 +36,6 @@ import scala.reflect.ClassTag
   *          pinger ! "hello world"
   *          expectMsg("hello world")
   *          }}}
-  *
-  *          All messages that are not the class of [[Message]] will not be handled.
-  *
-  *          {{{
-  *          pinger ! "string message"
-  *          expectMsg("string message")
-  *          }}}
   */
 final case class ReceiveMessage[Message]() extends Keyword[ReceiveMessage[Message], Message]
 object ReceiveMessage {
