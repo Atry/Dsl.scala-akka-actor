@@ -8,13 +8,11 @@ import com.yang_bo.dsl.keywords.akka.actor.{ReceiveMessage, ReceiveMessagePartia
 import scala.language.higherKinds
 import scala.reflect.ClassTag
 
-/** Contains the [[com.thoughtworks.dsl.Dsl]] instances in the [[akka.actor.typed.Behavior]] domain.
-  *
-  * == Installation ==
+/** Contains the [[com.thoughtworks.dsl.Dsl]] instances in a typed actor.
   *
   * <a href="https://search.maven.org/search?q=g:com.yang-bo.dsl.domains.akka.actor%20a:typed_*"><img src="https://img.shields.io/maven-central/v/com.yang-bo.dsl.domains.akka.actor/typed_2.13.svg?label=libraryDependencies+%2B=+%22com.yang-bo.dsl.domains.akka.actor%22+%25%25+%22typed%22+%25"/></a>
   *
-  * == Imports ==
+  * Add the following import statement to enable [[keywords.akka.actor.ReceiveMessage]] in the [[akka.actor.typed.Behavior]] domain..
   *
   * {{{
   * import com.yang_bo.dsl.domains.akka.actor.typed._
@@ -73,9 +71,73 @@ import scala.reflect.ClassTag
   *          state.expectMessage(Closed)
   *          }}}
   *
+  * @note To use `try` / `catch` / `finally` expressions with !-notation,
+  *       the return type of enclosing function should be `Behavior[?] !! Throwable`,
+  *       as shown in the following `createDecoderActor` method.
+  *
+  *       It will open an [[java.io.InputStream]],
+  *       read [[String]] from the stream,
+  *       and close the stream in a `finally` block.
+  *       
+  *       {{{
+  *       import akka.actor.typed._
+  *       import akka.actor.typed.scaladsl._
+  *       import com.yang_bo.dsl.keywords.akka.actor.ReceiveMessagePartial
+  *       import com.thoughtworks.dsl.Dsl.!!
+  *       import java.io._
+  *       import java.net._
+  *
+  *       sealed trait Command
+  *       case class Open(open: () => InputStream) extends Command
+  *       case class ReadObject(response: ActorRef[String]) extends Command
+  *       case object Close extends Command
+  *
+  *       def createDecoderActor: Behavior[Command] !! Throwable = {
+  *         while (true) {
+  *           val inputStream = (!ReceiveMessagePartial[Open]).open()
+  *           try {
+  *             val ReadObject(replyTo) = !ReceiveMessagePartial[ReadObject]
+  *             replyTo ! new java.io.DataInputStream(inputStream).readUTF()
+  *             !ReceiveMessagePartial[Close.type]
+  *           } finally {
+  *             inputStream.close()
+  *           }
+  *         }
+  *         throw new AssertionError("Unreachable code!")
+  *       }
+  *       }}}
+  *
+  *       Since `createDecoderActor` returns `Behavior[Command] !! Throwable`,
+  *       it receives message of type `Command`,
+  *       and accepts an additional callback function
+  *       to handle exceptions that are not handled in `createDecoderActor`.
+  *
+  *       {{{
+  *       import akka.actor.testkit.typed.scaladsl._
+  *       val errorHandler = mockFunction[Throwable, Behavior[Command]]
+  *       val decoderActor = BehaviorTestKit(createDecoderActor(errorHandler))
+  *       }}}
+  *
+  *       Given an `InputStream` that throws an [[java.io.IOException]] when read from it,
+  *
+  *
+  *       {{{
+  *       val inputStream: InputStream = mock[InputStream]
+  *       toMockFunction0(inputStream.read _).expects().throws(new IOException())
+  *       errorHandler.expects(where[Throwable](_.isInstanceOf[IOException])).returns(Behaviors.stopped)
+  *       decoderActor.run(Open(() => inputStream))
+  *       }}}
+  *
+  *       when the `decoderActor` try to read a [[String]] from the stream,
+  *       it should close the stream due to `finally` block triggered by the exception.
+  *
+  *       {{{
+  *       toMockFunction0(inputStream.close _).expects().returns(()).once()
+  *       val inbox = TestInbox[String]()
+  *       decoderActor.run(ReadObject(inbox.ref))
+  *       inbox.receiveAll() should be(empty)
+  *       }}}
   * @author 杨博 (Yang Bo)
-  *
-  *
   */
 object typed {
 
@@ -85,7 +147,6 @@ object typed {
     *
     *          {{{
     *          import com.yang_bo.dsl.keywords.akka.actor.ReceiveMessage
-    *          import com.yang_bo.dsl.domains.akka.actor.typed.typedReceiveMessageDsl
     *          import akka.actor.typed._
     *
     *          case class Ping(message: String, response: ActorRef[Pong])
@@ -122,7 +183,6 @@ object typed {
     *
     *          {{{
     *          import com.yang_bo.dsl.keywords.akka.actor.ReceiveMessagePartial
-    *          import com.yang_bo.dsl.domains.akka.actor.typed.typedReceiveMessagePartialDsl
     *          import akka.actor.typed._
     *
     *          case class Ping(message: String, response: ActorRef[Pong])
