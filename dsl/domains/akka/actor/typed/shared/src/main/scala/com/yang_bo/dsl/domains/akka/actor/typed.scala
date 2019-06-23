@@ -24,7 +24,7 @@ import scala.reflect.ClassTag
   *
   *          The following state machine contains two states and two transitions between them.
   *
-  *          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Finite_state_machine_example_with_comments.svg/420px-Finite_state_machine_example_with_comments.svg.png"/>
+  *          <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Finite_state_machine_example_with_comments.svg/420px-Finite_state_machine_example_with_comments.svg.png"/></p>
   *
   *          It can be created as a simple `while` loop with the help of [[keywords.akka.actor.ReceiveMessage.Partial]]:
   *
