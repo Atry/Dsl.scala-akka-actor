@@ -7,7 +7,9 @@ import com.thoughtworks.dsl.Dsl.Keyword
 import scala.reflect.ClassTag
 
 /** A [[com.thoughtworks.dsl.Dsl.Keyword keyword]] to receive next message of an Akka actor.
-  * <a href="https://search.maven.org/search?q=g:com.yang-bo.dsl.keywords.akka.actor%20a:receivemessage_*"><img src="https://img.shields.io/maven-central/v/com.yang-bo.dsl.keywords.akka/actor_2.13.svg?label=libraryDependencies+%2B=+%22com.yang-bo.dsl.keywords.akka%22+%25%25+%22actor%22+%25"/></a>
+  *
+  * <a href="https://search.maven.org/search?q=g:com.yang-bo.dsl.keywords.akka.actor%20a:receivemessage_*"><img src="https://img.shields.io/maven-central/v/com.yang-bo.dsl.keywords.akka/actor_2.13.svg?label=libraryDependencies+%2B=+%22com.yang-bo.dsl.keywords.akka.actor%22+%25%25+%22receivemessage%22+%25"/></a>
+  *
   * @tparam Message The type of message being received,
   *                 which must be [[Any]] for [[akka.actor.Actor]],
   *                 and must be the same type of `T` for [[akka.actor.typed.Behavior]].
