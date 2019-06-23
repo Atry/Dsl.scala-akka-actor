@@ -3,7 +3,7 @@ package com.yang_bo.dsl.domains.akka.actor
 import akka.actor.typed.Behavior
 import akka.actor.typed.scaladsl.Behaviors
 import com.thoughtworks.dsl.Dsl
-import com.yang_bo.dsl.keywords.akka.actor.{ReceiveMessage, ReceiveMessagePartial}
+import com.yang_bo.dsl.keywords.akka.actor.ReceiveMessage, ReceiveMessage.Partial
 
 import scala.language.higherKinds
 import scala.reflect.ClassTag
@@ -16,6 +16,7 @@ import scala.reflect.ClassTag
   *
   * {{{
   * import com.yang_bo.dsl.domains.akka.actor.typed._
+  * import com.yang_bo.dsl.keywords.akka.actor.ReceiveMessage
   * }}}
   *
   * @example This library can be used as an alternative to [[akka.actor.FSM]],
@@ -25,11 +26,10 @@ import scala.reflect.ClassTag
   *
   *          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Finite_state_machine_example_with_comments.svg/420px-Finite_state_machine_example_with_comments.svg.png"/>
   *
-  *          It can be created as a simple `while` loop with the help of [[keywords.akka.actor.ReceiveMessagePartial]]:
+  *          It can be created as a simple `while` loop with the help of [[keywords.akka.actor.ReceiveMessage.Partial]]:
   *
   *          {{{
   *          import akka.actor.typed._
-  *          import com.yang_bo.dsl.keywords.akka.actor.ReceiveMessagePartial
   *
   *          sealed trait State
   *          case object Opened extends State
@@ -41,9 +41,9 @@ import scala.reflect.ClassTag
   *
   *          def doorActor: Behavior[Transition] = {
   *            while (true) {
-  *              val open = !ReceiveMessagePartial[Open]
+  *              val open = !ReceiveMessage.Partial[Open]
   *              open.response ! Opened
-  *              val close = !ReceiveMessagePartial[Close]
+  *              val close = !ReceiveMessage.Partial[Close]
   *              close.response ! Closed
   *            }
   *            throw new Exception("Unreachable code!")
@@ -70,7 +70,6 @@ import scala.reflect.ClassTag
   *          door.run(Close(state.ref))
   *          state.expectMessage(Closed)
   *          }}}
-  *
   * @note To use `try` / `catch` / `finally` expressions with !-notation,
   *       the return type of enclosing function should be `Behavior[?] !! Throwable`,
   *       as shown in the following `createDecoderActor` method.
@@ -82,7 +81,6 @@ import scala.reflect.ClassTag
   *       {{{
   *       import akka.actor.typed._
   *       import akka.actor.typed.scaladsl._
-  *       import com.yang_bo.dsl.keywords.akka.actor.ReceiveMessagePartial
   *       import com.thoughtworks.dsl.Dsl.!!
   *       import java.io._
   *       import java.net._
@@ -94,11 +92,11 @@ import scala.reflect.ClassTag
   *
   *       def createDecoderActor: Behavior[Command] !! Throwable = {
   *         while (true) {
-  *           val inputStream = (!ReceiveMessagePartial[Open]).open()
+  *           val inputStream = (!ReceiveMessage.Partial[Open]).open()
   *           try {
-  *             val ReadObject(replyTo) = !ReceiveMessagePartial[ReadObject]
+  *             val ReadObject(replyTo) = !ReceiveMessage.Partial[ReadObject]
   *             replyTo ! new java.io.DataInputStream(inputStream).readUTF()
-  *             !ReceiveMessagePartial[Close.type]
+  *             !ReceiveMessage.Partial[Close.type]
   *           } finally {
   *             inputStream.close()
   *           }
@@ -146,7 +144,6 @@ object typed {
     * @example Given an `echoActor` that receives `Ping` messages and replies corresponding `Pong` messages
     *
     *          {{{
-    *          import com.yang_bo.dsl.keywords.akka.actor.ReceiveMessage
     *          import akka.actor.typed._
     *
     *          case class Ping(message: String, response: ActorRef[Pong])
@@ -177,12 +174,11 @@ object typed {
     Behaviors.receiveMessage[Message](handler)
   }
 
-  /** Returns an [[com.thoughtworks.dsl.Dsl]] instance for [[keywords.akka.actor.ReceiveMessagePartial]] in the [[akka.actor.typed.Behavior]] domain.
+  /** Returns an [[com.thoughtworks.dsl.Dsl]] instance for [[keywords.akka.actor.ReceiveMessage.Partial]] in the [[akka.actor.typed.Behavior]] domain.
     *
     * @example Given an `echoActor` that receives `Ping` messages and replies corresponding `Pong` messages
     *
     *          {{{
-    *          import com.yang_bo.dsl.keywords.akka.actor.ReceiveMessagePartial
     *          import akka.actor.typed._
     *
     *          case class Ping(message: String, response: ActorRef[Pong])
@@ -190,7 +186,7 @@ object typed {
     *
     *          def echoActor: Behavior[AnyRef] = {
     *            while (true) {
-    *              val Ping(m, replyTo) = !ReceiveMessagePartial[Ping]
+    *              val Ping(m, replyTo) = !(ReceiveMessage.Partial[Ping])
     *              replyTo ! Pong(m)
     *            }
     *            throw new Exception("Unreachable code!")
@@ -215,7 +211,7 @@ object typed {
                                              Message,
                                              Domain[T] >: Behaviors.Receive[T] <: Behavior[T]](
       implicit classTag: ClassTag[PartialMessage]
-  ): Dsl[ReceiveMessagePartial[PartialMessage], Domain[Message], PartialMessage] = { (keyword, handler) =>
+  ): Dsl[ReceiveMessage.Partial[PartialMessage], Domain[Message], PartialMessage] = { (keyword, handler) =>
     Behaviors.receiveMessagePartial[Message] {
       case message: PartialMessage =>
         handler(message)

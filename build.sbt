@@ -2,18 +2,18 @@ import sbtcrossproject.CrossPlugin.autoImport.crossProject
 
 ThisBuild / organization := "com.yang-bo"
 
-lazy val `actor` = crossProject(JSPlatform, JVMPlatform).in(file("dsl/keywords/akka/actor"))
+lazy val ReceiveMessage = crossProject(JSPlatform, JVMPlatform).in(file("dsl/keywords/akka/actor/ReceiveMessage"))
 
-lazy val `actorJVM` = `actor`.jvm
+lazy val ReceiveMessageJVM = ReceiveMessage.jvm
 
-lazy val `actorJS` = `actor`.js
+lazy val ReceiveMessageJS = ReceiveMessage.js
 
-lazy val `typed` =
-  crossProject(JSPlatform, JVMPlatform).in(file("dsl/domains/akka/actor/typed")).dependsOn(`actor`)
+lazy val typed =
+  crossProject(JSPlatform, JVMPlatform).in(file("dsl/domains/akka/actor/typed")).dependsOn(ReceiveMessage)
 
-lazy val `typedJVM` = `typed`.jvm
+lazy val typedJVM = typed.jvm
 
-lazy val `typedJS` = `typed`.js
+lazy val typedJS = typed.js
 
 enablePlugins(ScalaUnidocPlugin)
 
