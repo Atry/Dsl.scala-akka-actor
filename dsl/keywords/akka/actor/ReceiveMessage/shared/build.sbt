@@ -4,7 +4,11 @@ libraryDependencies += "com.thoughtworks.dsl" %%% "dsl" % "1.4.0"
 
 addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "1.4.0")
 
+libraryDependencies += "com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "1.4.0" % Optional // For Scaladoc
+
 addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-reseteverywhere" % "1.4.0")
+
+libraryDependencies += "com.thoughtworks.dsl" %% "compilerplugins-reseteverywhere" % "1.4.0" % Optional // For Scaladoc
 
 libraryDependencies += "org.scalatest" %%% "scalatest" % "3.0.8" % Test
 

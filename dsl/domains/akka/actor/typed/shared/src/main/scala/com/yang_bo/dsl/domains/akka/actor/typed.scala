@@ -10,7 +10,20 @@ import scala.reflect.ClassTag
 
 /** Contains the [[com.thoughtworks.dsl.Dsl]] instances in a typed actor.
   *
-  * Add the following import statement to enable [[keywords.akka.actor.ReceiveMessage]] in the [[akka.actor.typed.Behavior]] domain..
+  * == Installation ==
+  *
+  * This [[typed]] object supports [[keywords.akka.actor.ReceiveMessage.unary_$bang !]]-notation for [[keywords.akka.actor.ReceiveMessage]] in the typed actor domains,
+  * which requires [[com.thoughtworks.dsl.compilerplugins.BangNotation BangNotation]] and [[com.thoughtworks.dsl.compilerplugins.ResetEverywhere ResetEverywhere]] compiler plugins along with this `typed` library.
+  *
+  * <pre>
+  * addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "latest.release")
+  * addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-reseteverywhere" % "latest.release")
+  * libraryDependencies += "com.yang-bo.dsl.domains.akka.actor" %% "typed" % "latest.release"
+  * </pre>
+  *
+  * == Imports ==
+  *
+  * Then, add the following import statement to enable `ReceiveMessage` in the [[akka.actor.typed.Behavior]] domain.
   *
   * {{{
   * import com.yang_bo.dsl.domains.akka.actor.typed._
