@@ -6,7 +6,7 @@ addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "1.
 
 addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-reseteverywhere" % "1.3.2")
 
-libraryDependencies += "org.scalatest" %%% "scalatest" % "3.0.8"
+libraryDependencies += "org.scalatest" %%% "scalatest" % "3.0.8" % Test
 
 scalacOptions ++= {
   scalaBinaryVersion.value match {
