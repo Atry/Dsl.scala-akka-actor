@@ -30,8 +30,6 @@ import scala.reflect.ClassTag
   * import com.yang_bo.dsl.keywords.akka.actor.ReceiveMessage
   * }}}
   *
-  * <a href="https://search.maven.org/search?q=g:com.yang-bo.dsl.domains.akka.actor%20a:typed_*"><img src="https://img.shields.io/maven-central/v/com.yang-bo.dsl.domains.akka.actor/typed_2.13.svg?label=libraryDependencies+%2B=+%22com.yang-bo.dsl.domains.akka.actor%22+%25%25+%22typed%22+%25"/></a>
-  *
   * @example This library can be used as an alternative to [[akka.actor.FSM]],
   *          for creating state machines in simple Scala control flow.
   *
