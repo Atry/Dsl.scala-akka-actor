@@ -102,6 +102,8 @@ import scala.reflect.ClassTag
   *       case class ReadObject(response: ActorRef[String]) extends Command
   *       case object Close extends Command
   *
+  *       class DecoderException(cause: Throwable) extends Exception(cause)
+  *
   *       def createDecoderActor: Behavior[Command] !! Throwable = {
   *         while (true) {
   *           val inputStream = (!ReceiveMessage.Partial[Open]).open()
@@ -109,6 +111,9 @@ import scala.reflect.ClassTag
   *             val ReadObject(replyTo) = !ReceiveMessage.Partial[ReadObject]
   *             replyTo ! new java.io.DataInputStream(inputStream).readUTF()
   *             !ReceiveMessage.Partial[Close.type]
+  *           } catch {
+  *             case e: IOException =>
+  *               throw new DecoderException(e)
   *           } finally {
   *             inputStream.close()
   *           }
@@ -130,11 +135,9 @@ import scala.reflect.ClassTag
   *
   *       Given an `InputStream` that throws an [[java.io.IOException]] when read from it,
   *
-  *
   *       {{{
   *       val inputStream: InputStream = mock[InputStream]
   *       toMockFunction0(inputStream.read _).expects().throws(new IOException())
-  *       errorHandler.expects(where[Throwable](_.isInstanceOf[IOException])).returns(Behaviors.stopped)
   *       decoderActor.run(Open(() => inputStream))
   *       }}}
   *
@@ -142,8 +145,9 @@ import scala.reflect.ClassTag
   *       it should close the stream due to `finally` block triggered by the exception.
   *
   *       {{{
-  *       toMockFunction0(inputStream.close _).expects().returns(()).once()
   *       val inbox = TestInbox[String]()
+  *       errorHandler.expects(where[Throwable](_.isInstanceOf[DecoderException])).returns(Behaviors.stopped)
+  *       toMockFunction0(inputStream.close _).expects().returns(()).once()
   *       decoderActor.run(ReadObject(inbox.ref))
   *       inbox.receiveAll() should be(empty)
   *       }}}
