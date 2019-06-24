@@ -104,7 +104,7 @@ def createDecoderActor: Behavior[Command] !! Throwable = {
 }
 ```
 
-The return type of `createDecoderActor`is `Behavior[Command] !! Throwable`, which is a type alias of `(Throwable => Behavior[Command]) => Behavior[Command]`. It receives message of the type `Command`, and accepts an additional callback function to handle exceptions that are not handled in `createDecoderActor`.
+The return type `Behavior[Command] !! Throwable` is a type alias of `(Throwable => Behavior[Command]) => Behavior[Command]`, which receives message of the type `Command`, and accepts an additional callback function to handle exceptions that are not handled in `createDecoderActor`.
 
 ``` scala
 import akka.actor.testkit.typed.scaladsl._
