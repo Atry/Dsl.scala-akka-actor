@@ -81,7 +81,7 @@ import java.net._
 
 sealed trait Command
 case class Open(open: () => InputStream) extends Command
-case class ReadObject(response: ActorRef[String]) extends Command
+case class Read(response: ActorRef[String]) extends Command
 case object Close extends Command
 
 class DecoderException(cause: Throwable) extends Exception(cause)
@@ -90,7 +90,7 @@ def createDecoderActor: Behavior[Command] !! Throwable = {
   while (true) {
     val inputStream = (!ReceiveMessage.Partial[Open]).open()
     try {
-      val ReadObject(replyTo) = !ReceiveMessage.Partial[ReadObject]
+      val Read(replyTo) = !ReceiveMessage.Partial[Read]
       replyTo ! new java.io.DataInputStream(inputStream).readUTF()
       !ReceiveMessage.Partial[Close.type]
     } catch {
@@ -126,7 +126,7 @@ when the `decoderActor` read a `String` from the stream, it should close the str
 val inbox = TestInbox[String]()
 errorHandler.expects(where[Throwable](_.isInstanceOf[DecoderException])).returns(Behaviors.stopped)
 toMockFunction0(inputStream.close _).expects().returns(()).once()
-decoderActor.run(ReadObject(inbox.ref))
+decoderActor.run(Read(inbox.ref))
 inbox.receiveAll() should be(empty)
 ```
 
