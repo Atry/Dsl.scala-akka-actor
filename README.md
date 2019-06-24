@@ -160,6 +160,8 @@ This project also supports [Scala.js](https://www.scala-js.org/), with the help 
 
 Examples in previous sections are written in [ScalaTest](http://www.scalatest.org/) and [ScalaMock](https://scalamock.org/).
 
+There is also a [Dsl.scala-akka-http](https://github.com/ThoughtWorksInc/Dsl.scala-akka-http) project to provide direct style DSL and exception handling feature to Akka HTTP.
+
 ## Links
 
 * [Dsl.scala-akka-actor project page](https://github.com/Atry/Dsl.scala-akka-actor)
@@ -170,3 +172,4 @@ Examples in previous sections are written in [ScalaTest](http://www.scalatest.or
 * [Akka Actor](https://doc.akka.io/docs/akka/current/actors.html)
 * [Akka Typed Actor](https://doc.akka.io/docs/akka/current/typed/actors.html)
 * [Akka.js](http://akka-js.org/)
+* [Dsl.scala-akka-http](https://github.com/ThoughtWorksInc/Dsl.scala-akka-http)
