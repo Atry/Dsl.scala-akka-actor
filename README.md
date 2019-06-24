@@ -120,7 +120,7 @@ toMockFunction0(inputStream.read _).expects().throws(new IOException())
 decoderActor.run(Open(() => inputStream))
 ```
 
-when the decoderActor try to read a String from the stream, it should close the stream due to `finally` block triggered by the exception.
+when the `decoderActor` read a `String` from the stream, it should close the stream due to `finally` block triggered by the exception.
 
 ``` scala
 val inbox = TestInbox[String]()
