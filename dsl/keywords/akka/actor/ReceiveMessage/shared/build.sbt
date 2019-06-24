@@ -10,6 +10,8 @@ addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-reseteverywhere" % 
 
 libraryDependencies += "com.thoughtworks.dsl" %% "compilerplugins-reseteverywhere" % "1.4.0" % Optional // For Scaladoc
 
+libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value % Optional // For Scaladoc
+
 libraryDependencies += "org.scalatest" %%% "scalatest" % "3.0.8" % Test
 
 scalacOptions ++= {
