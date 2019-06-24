@@ -134,7 +134,6 @@ import scala.reflect.ClassTag
   *       {{{
   *       val inputStream: InputStream = mock[InputStream]
   *       toMockFunction0(inputStream.read _).expects().throws(new IOException())
-  *       errorHandler.expects(where[Throwable](_.isInstanceOf[IOException])).returns(Behaviors.stopped)
   *       decoderActor.run(Open(() => inputStream))
   *       }}}
   *
@@ -142,8 +141,9 @@ import scala.reflect.ClassTag
   *       it should close the stream due to `finally` block triggered by the exception.
   *
   *       {{{
-  *       toMockFunction0(inputStream.close _).expects().returns(()).once()
   *       val inbox = TestInbox[String]()
+  *       errorHandler.expects(where[Throwable](_.isInstanceOf[IOException])).returns(Behaviors.stopped)
+  *       toMockFunction0(inputStream.close _).expects().returns(()).once()
   *       decoderActor.run(ReadObject(inbox.ref))
   *       inbox.receiveAll() should be(empty)
   *       }}}
