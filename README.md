@@ -6,7 +6,7 @@
 
 ## Getting started
 
-This library allows !-notation to receive messages in the Akka actors, which requires `BangNotation` and `ResetEverywhere` compiler plugins, along with libraries of this project. For sbt, add the following settings to your build.sbt:
+This project allows !-notation to receive messages in the Akka actors, which requires `BangNotation` and `ResetEverywhere` compiler plugins, along with libraries of this project. For sbt, add the following settings to your build.sbt:
 
 ``` sbt
 addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "latest.release")
