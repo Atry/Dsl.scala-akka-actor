@@ -13,5 +13,3 @@ addSbtPlugin("com.thoughtworks.example" % "sbt-example" % "6.0.1")
 addSbtPlugin("org.portable-scala" % "sbt-scalajs-crossproject" % "0.6.0")
 
 addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.28")
-
-addSbtPlugin("com.thoughtworks.sbt-best-practice" % "subdirectory-organization" % "7.0.1+57-c225c426")
