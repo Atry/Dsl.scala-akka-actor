@@ -14,6 +14,7 @@ import scala.reflect.ClassTag
   *
   * This [[typed]] object supports [[keywords.akka.actor.ReceiveMessage.unary_$bang !]]-notation for [[keywords.akka.actor.ReceiveMessage]] in the typed actor domains,
   * which requires [[com.thoughtworks.dsl.compilerplugins.BangNotation BangNotation]] and [[com.thoughtworks.dsl.compilerplugins.ResetEverywhere ResetEverywhere]] compiler plugins along with this `typed` library.
+  * For sbt, add the following settings to your `build.sbt`:
   *
   * <pre>
   * addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "latest.release")

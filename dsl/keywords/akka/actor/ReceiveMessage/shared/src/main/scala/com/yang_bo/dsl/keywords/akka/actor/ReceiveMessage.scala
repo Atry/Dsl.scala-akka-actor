@@ -12,6 +12,7 @@ import scala.reflect.ClassTag
   *
   * This [[ReceiveMessage]] keyword supports [[unary_$bang !]]-notation,
   * which requires [[com.thoughtworks.dsl.compilerplugins.BangNotation BangNotation]] and [[com.thoughtworks.dsl.compilerplugins.ResetEverywhere ResetEverywhere]] compiler plugins along with this `receivemessage` library.
+  * For sbt, add the following settings to your `build.sbt`:
   *
   * <pre>
   * addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "latest.release")
