@@ -14,7 +14,7 @@ libraryDependencies ++= {
   if (scalaBinaryVersion.value == "2.13") {
     None
   } else {
-    Some("org.scalamock" %%% "scalamock" % "4.2.0" % Test)
+    Some("org.scalamock" %%% "scalamock" % "4.3.0" % Test)
   }
 }
 
