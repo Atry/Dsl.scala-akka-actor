@@ -1,12 +1,12 @@
 enablePlugins(SubdirectoryOrganization)
 
-libraryDependencies += "com.thoughtworks.dsl" %%% "keywords-catch" % "1.5.1" % Optional
+libraryDependencies += "com.thoughtworks.dsl" %%% "keywords-catch" % "1.5.2" % Optional
 
-libraryDependencies += "com.thoughtworks.dsl" %%% "dsl" % "1.5.1"
+libraryDependencies += "com.thoughtworks.dsl" %%% "dsl" % "1.5.2"
 
-addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "1.5.1")
+addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "1.5.2")
 
-addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-reseteverywhere" % "1.5.1")
+addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-reseteverywhere" % "1.5.2")
 
 libraryDependencies += "org.scalatest" %%% "scalatest" % "3.0.8" % Test
 
