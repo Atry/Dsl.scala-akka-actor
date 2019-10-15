@@ -35,3 +35,5 @@ scalacOptions ++= {
 }
 
 publish / skip := true
+
+ThisBuild / useCoursier := false
