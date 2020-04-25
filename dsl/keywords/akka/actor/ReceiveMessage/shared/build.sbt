@@ -12,7 +12,7 @@ libraryDependencies += "com.thoughtworks.dsl" %% "compilerplugins-reseteverywher
 
 libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value % Optional // For Scaladoc
 
-libraryDependencies += "org.scalatest" %%% "scalatest" % "3.1.0" % Test
+libraryDependencies += "org.scalatest" %%% "scalatest" % "3.1.1" % Test
 
 scalacOptions ++= {
   scalaBinaryVersion.value match {
@@ -30,10 +30,10 @@ examplePackageRef := q"com.yang_bo.dsl.keywords.akka.actor"
 
 import meta._
 exampleSuperTypes := exampleSuperTypes.value.flatMap {
-  case ctor"_root_.org.scalatest.FreeSpec" =>
+  case ctor"_root_.org.scalatest.freespec.AnyFreeSpec" =>
     Seq(
       ctor"_root_.akka.testkit.TestKit(_root_.akka.actor.ActorSystem())",
-      ctor"_root_.org.scalatest.FreeSpecLike",
+      ctor"_root_.org.scalatest.freespec.AnyFreeSpecLike",
       ctor"_root_.com.yang_bo.dsl.keywords.akka.actor.ShutdownAfterAll",
       ctor"_root_.akka.testkit.ImplicitSender",
     )
