@@ -9,4 +9,5 @@ libraryDependencies ++= {
   }
 }
 
+test := {}
 skip := scalaBinaryVersion.value == "2.13"
