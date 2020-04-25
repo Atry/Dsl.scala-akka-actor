@@ -1,18 +1,18 @@
 enablePlugins(SubdirectoryOrganization)
 
-libraryDependencies += "com.thoughtworks.dsl" %%% "dsl" % "1.5.1"
+libraryDependencies += "com.thoughtworks.dsl" %%% "dsl" % "1.5.2"
 
-addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "1.5.1")
+addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "1.5.2")
 
-libraryDependencies += "com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "1.5.1" % Optional // For Scaladoc
+libraryDependencies += "com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "1.5.2" % Optional // For Scaladoc
 
-addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-reseteverywhere" % "1.5.1")
+addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-reseteverywhere" % "1.5.2")
 
-libraryDependencies += "com.thoughtworks.dsl" %% "compilerplugins-reseteverywhere" % "1.5.1" % Optional // For Scaladoc
+libraryDependencies += "com.thoughtworks.dsl" %% "compilerplugins-reseteverywhere" % "1.5.2" % Optional // For Scaladoc
 
 libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value % Optional // For Scaladoc
 
-libraryDependencies += "org.scalatest" %%% "scalatest" % "3.0.8" % Test
+libraryDependencies += "org.scalatest" %%% "scalatest" % "3.1.1" % Test
 
 scalacOptions ++= {
   scalaBinaryVersion.value match {

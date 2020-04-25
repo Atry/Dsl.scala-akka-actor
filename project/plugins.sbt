@@ -1,17 +1,15 @@
-addSbtPlugin("com.thoughtworks.sbt-best-practice" % "sbt-best-practice" % "7.1.1")
+addSbtPlugin("com.thoughtworks.sbt-best-practice" % "sbt-best-practice" % "7.2.0")
 
-libraryDependencies += "org.apache.httpcomponents" % "httpclient" % "4.5.9"
-
-addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.6")
+addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.9.2")
 
 addSbtPlugin("com.dwijnand" % "sbt-dynver" % "4.0.0")
 
-addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.1.2")
+addSbtPlugin("com.jsuereth" % "sbt-pgp" % "2.0.1")
 
 addSbtPlugin("org.lyranthe.sbt" % "partial-unification" % "1.1.2")
 
 addSbtPlugin("com.thoughtworks.example" % "sbt-example" % "6.0.1")
 
-addSbtPlugin("org.portable-scala" % "sbt-scalajs-crossproject" % "0.6.0")
+addSbtPlugin("org.portable-scala" % "sbt-scalajs-crossproject" % "0.6.1")
 
-addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.28")
+addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.31")
