@@ -1,14 +1,14 @@
 enablePlugins(SubdirectoryOrganization)
 
-libraryDependencies += "com.thoughtworks.dsl" %%% "dsl" % "1.5.2"
+libraryDependencies += "com.thoughtworks.dsl" %%% "dsl" % "1.5.3"
 
-addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "1.5.2")
+addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "1.5.3")
 
-libraryDependencies += "com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "1.5.2" % Optional // For Scaladoc
+libraryDependencies += "com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "1.5.3" % Optional // For Scaladoc
 
-addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-reseteverywhere" % "1.5.2")
+addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-reseteverywhere" % "1.5.3")
 
-libraryDependencies += "com.thoughtworks.dsl" %% "compilerplugins-reseteverywhere" % "1.5.2" % Optional // For Scaladoc
+libraryDependencies += "com.thoughtworks.dsl" %% "compilerplugins-reseteverywhere" % "1.5.3" % Optional // For Scaladoc
 
 libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value % Optional // For Scaladoc
 
