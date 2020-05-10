@@ -12,7 +12,7 @@ libraryDependencies += "com.thoughtworks.dsl" %% "compilerplugins-reseteverywher
 
 libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value % Optional // For Scaladoc
 
-libraryDependencies += "org.scalatest" %%% "scalatest" % "3.1.1" % Test
+libraryDependencies += "org.scalatest" %%% "scalatest" % "3.1.2" % Test
 
 scalacOptions ++= {
   scalaBinaryVersion.value match {
