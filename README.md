@@ -1,6 +1,6 @@
 # Akka Actor support for Dsl.scala
 
-[![Build Status](https://travis-ci.org/Atry/Dsl.scala-akka-actor.svg?branch=master)](https://travis-ci.org/Atry/Dsl.scala-akka-actor)
+[![Build Status](https://travis-ci.com/Atry/Dsl.scala-akka-actor.svg?branch=master)](https://travis-ci.com/Atry/Dsl.scala-akka-actor)
 
 **Dsl.scala-akka-actor** provides the [Akka](https://akka.io/) Actor support for [Dsl.scala](https://github.com/ThoughtWorksInc/Dsl.scala/). It is an alternative to [Akka FSM](https://doc.akka.io/docs/akka/current/fsm.html), for building actors with complex states from simple native Scala control flows.
 
