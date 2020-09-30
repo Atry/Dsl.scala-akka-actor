@@ -6,7 +6,7 @@ libraryDependencies += {
   } else if (VersionNumber(scalaJSVersion).numbers < Seq(1)) {
     "org.akka-js" %%% "akkajsactortyped" % "2.2.6.3"
   } else {
-    "org.akka-js" %%% "akkajsactortyped" % "2.2.6.4"
+    "org.akka-js" %%% "akkajsactortyped" % "2.2.6.9"
   }
 }
 
@@ -16,7 +16,7 @@ libraryDependencies += {
   } else if (VersionNumber(scalaJSVersion).numbers < Seq(1)) {
     "org.akka-js" %%% "akkajstypedtestkit" % "2.2.6.3" % Test
   } else {
-    "org.akka-js" %%% "akkajstypedtestkit" % "2.2.6.4" % Test
+    "org.akka-js" %%% "akkajstypedtestkit" % "2.2.6.9" % Test
   }
 }
 
@@ -26,7 +26,7 @@ libraryDependencies += {
   } else if (VersionNumber(scalaJSVersion).numbers < Seq(1)) {
     "org.akka-js" %%% "akkajstestkit" % "2.2.6.3" % Test
   } else {
-    "org.akka-js" %%% "akkajstestkit" % "2.2.6.4" % Test
+    "org.akka-js" %%% "akkajstestkit" % "2.2.6.9" % Test
   }
 }
 
