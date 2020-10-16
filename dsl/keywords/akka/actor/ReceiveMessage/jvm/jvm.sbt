@@ -1,6 +1,6 @@
-libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.5.31"
+libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.5.32"
 
-libraryDependencies += "com.typesafe.akka" %% "akka-testkit" % "2.5.31" % Test
+libraryDependencies += "com.typesafe.akka" %% "akka-testkit" % "2.5.32" % Test
 
 import Ordering.Implicits._
 
