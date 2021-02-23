@@ -2,7 +2,7 @@ libraryDependencies += {
   if (scalaBinaryVersion.value == "2.11") {
     "com.typesafe.akka" %% "akka-actor-typed" % "2.5.21"
   } else {
-    "com.typesafe.akka" %% "akka-actor-typed" % "2.6.4"
+    "com.typesafe.akka" %% "akka-actor-typed" % "2.6.13"
   }
 }
 
@@ -10,7 +10,7 @@ libraryDependencies += {
   if (scalaBinaryVersion.value == "2.11") {
     "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.5.21" % Test
   } else {
-    "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.4" % Test
+    "com.typesafe.akka" %% "akka-actor-testkit-typed" % "2.6.13" % Test
   }
 }
 
