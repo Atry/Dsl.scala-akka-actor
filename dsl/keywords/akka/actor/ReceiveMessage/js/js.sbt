@@ -6,7 +6,7 @@ libraryDependencies += {
   } else if (VersionNumber(scalaJSVersion).numbers < Seq(1)) {
     "org.akka-js" %%% "akkajsactor" % "2.2.6.3"
   } else {
-    "org.akka-js" %%% "akkajsactor" % "2.2.6.4"
+    "org.akka-js" %%% "akkajsactor" % "2.2.6.14"
   }
 }
 
@@ -16,6 +16,6 @@ libraryDependencies += {
   } else if (VersionNumber(scalaJSVersion).numbers < Seq(1)) {
     "org.akka-js" %%% "akkajstestkit" % "2.2.6.3" % Test
   } else {
-    "org.akka-js" %%% "akkajstestkit" % "2.2.6.4" % Test
+    "org.akka-js" %%% "akkajstestkit" % "2.2.6.14" % Test
   }
 }
