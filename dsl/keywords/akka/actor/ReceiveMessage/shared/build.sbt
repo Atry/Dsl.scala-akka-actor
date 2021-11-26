@@ -1,14 +1,14 @@
 enablePlugins(SubdirectoryOrganization)
 
-libraryDependencies += "com.thoughtworks.dsl" %%% "dsl" % "1.5.3"
+libraryDependencies += "com.thoughtworks.dsl" %%% "dsl" % "1.5.5"
 
-addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "1.5.3")
+addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "1.5.5")
 
-libraryDependencies += "com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "1.5.3" % Optional // For Scaladoc
+libraryDependencies += "com.thoughtworks.dsl" %% "compilerplugins-bangnotation" % "1.5.5" % Optional // For Scaladoc
 
-addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-reseteverywhere" % "1.5.3")
+addCompilerPlugin("com.thoughtworks.dsl" %% "compilerplugins-reseteverywhere" % "1.5.5")
 
-libraryDependencies += "com.thoughtworks.dsl" %% "compilerplugins-reseteverywhere" % "1.5.3" % Optional // For Scaladoc
+libraryDependencies += "com.thoughtworks.dsl" %% "compilerplugins-reseteverywhere" % "1.5.5" % Optional // For Scaladoc
 
 libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value % Optional // For Scaladoc
 
@@ -35,7 +35,7 @@ exampleSuperTypes := exampleSuperTypes.value.flatMap {
       ctor"_root_.akka.testkit.TestKit(_root_.akka.actor.ActorSystem())",
       ctor"_root_.org.scalatest.freespec.AnyFreeSpecLike",
       ctor"_root_.com.yang_bo.dsl.keywords.akka.actor.ShutdownAfterAll",
-      ctor"_root_.akka.testkit.ImplicitSender",
+      ctor"_root_.akka.testkit.ImplicitSender"
     )
   case otherTrait =>
     Seq(otherTrait)
