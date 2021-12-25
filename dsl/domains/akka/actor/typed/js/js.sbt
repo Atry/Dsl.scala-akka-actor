@@ -34,7 +34,7 @@ libraryDependencies ++= {
   if (VersionNumber(scalaJSVersion).numbers >= Seq(1)) {
     None
   } else {
-    Some("org.scalamock" %%% "scalamock" % "4.4.0" % Test)
+    Some("org.scalamock" %%% "scalamock" % "5.2.0" % Test)
   }
 }
 
